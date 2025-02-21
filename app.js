@@ -44,10 +44,14 @@ function elegirAmigo(lista) {
 function sortearAmigo() {
     let amigo = elegirAmigo(listaDeAmigos);
     let resultado = document.getElementById('resultado');
+    let listaAmigos = document.getElementById('listaAmigos');
     if(listaDeAmigos.length > 1 ){
         resultado.textContent = `Su amigo secreto es: ${amigo}`;
         document.getElementById('reiniciarJuego_amigo').removeAttribute('disabled');
         document.getElementById('boton_sortear').disabled = true;
+        document.getElementById('agregar').disabled = true;
+        listaAmigos.innerHTML = '';
+        listaDeAmigos = [];
     }else{
         alert('favor ingresar al menos dos nombres de amigos');
     }
@@ -63,6 +67,7 @@ function condicionInicial(){
 }
 
 function reiniciarJuegoAmigo(){
+    document.getElementById('agregar').disabled = false;
     limpiarCampo();
     condicionInicial();
     document.querySelector('#reiniciarJuego_amigo').setAttribute('disabled', true);
